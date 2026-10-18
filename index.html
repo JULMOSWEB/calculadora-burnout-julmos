@@ -1,48 +1,314 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b7192c"><title>Calculadora del Costo del Burnout | Julmos Consultores</title>
-<style>
-:root{font-family:Arial,Helvetica,sans-serif;color:#242424;background:#f6f6f6}*{box-sizing:border-box}body{margin:0;padding:24px}main{max-width:870px;margin:auto;background:white;border:1px solid #e8e8e8;border-radius:20px;padding:32px;box-shadow:0 8px 32px #0000000b}.brand,.tag{color:#b7192c;font-size:12px;font-weight:800;letter-spacing:1.2px}.motto{font-size:11px;color:#777;letter-spacing:1px;margin-top:5px}h1{font-size:clamp(27px,4vw,38px);line-height:1.14;margin:25px 0 12px}h2{font-size:22px;margin:10px 0 20px}h3{font-size:17px}p{line-height:1.6;color:#666}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field label{display:block;font-size:13px;font-weight:700;margin:10px 0 7px}input,select{width:100%;padding:13px;border:1px solid #d7d7d7;border-radius:9px;background:#fff;color:#222;font-size:15px}input:focus,select:focus,button:focus-visible{outline:2px solid #b7192c;outline-offset:2px}.hint{font-size:12px;color:#777;line-height:1.5;margin-top:6px}.span2{grid-column:1/-1}.assumptions{margin-top:26px;padding:20px;border:1px solid #ececec;border-radius:14px;background:#fafafa}.ass-row{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid #e8e8e8;padding:15px 0}.ass-row:first-of-type{border:0}.ass-row strong{font-size:21px;color:#b7192c;white-space:nowrap}.ass-row b{font-size:14px}.info{display:inline-flex;justify-content:center;align-items:center;width:23px;height:23px;border:1px solid #bbb;background:white;border-radius:50%;cursor:pointer;font-size:12px;margin-left:5px;color:#555}.explanation{display:none;font-size:12px;color:#666;line-height:1.6;margin-top:8px;max-width:650px}.explanation.open{display:block}.explanation a{color:#a4192b}.btn{display:inline-block;border:0;border-radius:9px;background:#b7192c;color:white;padding:15px 23px;font-weight:700;font-size:15px;cursor:pointer;margin-top:20px}.btn:disabled{opacity:.65;cursor:wait}.error{color:#a4192b;font-size:13px;margin-top:12px}.hidden{display:none!important}.results{border-top:1px solid #eee;margin-top:30px;padding-top:26px}.hero{background:#b7192c;color:#fff;border-radius:14px;padding:25px}.hero small{font-weight:700;letter-spacing:1px}.hero .big{font-size:clamp(30px,5vw,45px);font-weight:800;margin:10px 0;overflow-wrap:anywhere}.hero .sub{font-size:13px;opacity:.95}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.metric{border:1px solid #e7e7e7;border-radius:11px;padding:16px}.metric span{font-size:12px;color:#777}.metric b{display:block;font-size:21px;margin-top:10px;overflow-wrap:anywhere}.smallstats{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}.smallstats div{background:#f7f7f7;padding:12px 15px;border-radius:9px;font-size:13px}.smallstats strong{display:block;margin-top:4px}.method{font-size:12px;color:#777;line-height:1.65;background:#fafafa;border-left:3px solid #b7192c;padding:12px 15px;margin-top:20px}.ai{margin-top:26px;padding:22px;border:1px solid #e8e8e8;border-radius:13px}.analysis{white-space:pre-wrap;line-height:1.75;font-size:14px;margin-top:17px}.cta{background:#fafafa;padding:20px;border-radius:12px;margin-top:25px}.cta a{color:#b7192c;font-weight:700}.foot{font-size:12px;color:#777;text-align:center;margin-top:24px}@media(max-width:650px){body{padding:0}main{border:0;border-radius:0;padding:22px 17px}.grid,.metrics{grid-template-columns:1fr}.span2{grid-column:auto}.assumptions{padding:15px}.metric b{font-size:22px}}
-</style></head><body><main><div class="brand">JULMOS CONSULTORES</div><div class="motto">VISIÓN · PASIÓN · PROPÓSITO</div><h1>¿Cuánto le cuesta el burnout a tu empresa?</h1><p>El agotamiento laboral puede afectar la productividad, aumentar el ausentismo y contribuir a la rotación. Estima el impacto económico potencial anual con solo cinco datos.</p>
-<div class="tag">01 / DATOS DE TU ORGANIZACIÓN</div><h2>Conozcamos tu empresa</h2>
-<div class="grid"><div class="field span2"><label for="pais">País</label><select id="pais"><option>Panamá</option><option>Costa Rica</option><option>El Salvador</option><option>Guatemala</option><option>Honduras</option><option>Nicaragua</option><option>Colombia</option><option>República Dominicana</option></select><div class="hint">El país determina la moneda y los supuestos de terminación laboral del componente de rotación.</div></div>
-<div class="field"><label for="empleados">Número de colaboradores</label><input id="empleados" type="number" min="1" step="1" value="100"></div><div class="field"><label for="salario" id="salarioLabel">Salario mensual promedio (USD)</label><input id="salario" type="number" min="0.01" step="any" value="1200"></div>
-<div class="field"><label for="afectados">Colaboradores con burnout reportado o sospechado (%) <button class="info" type="button" data-note="definicion" aria-label="¿Qué significa reportado o sospechado?" aria-expanded="false">i</button></label><div id="definicion" class="explanation">Incluye reportes voluntarios de agotamiento laboral persistente o señales que ameriten evaluación. No equivale a un diagnóstico médico. Utiliza solo datos agregados y evita identificar a personas.</div><input id="afectados" type="number" min="0" max="100" step="any" value="20" aria-label="Porcentaje de colaboradores con burnout reportado o sospechado"><div id="equiv" class="hint">20% de la plantilla equivale a 20 colaboradores.</div></div>
-<div class="field"><label for="rotacion">Rotación anual (%)</label><input id="rotacion" type="number" min="0" max="100" step="any" value="12"><div class="hint">Las salidas anuales se calculan automáticamente con este porcentaje.</div></div></div>
-<section class="assumptions"><div class="tag">02 / SUPUESTOS DEL MODELO JULMOS</div><h3>¿De dónde salen nuestras estimaciones?</h3>
-<div class="ass-row"><div><b>Pérdida de productividad</b><button class="info" type="button" data-note="prodNote" aria-expanded="false" aria-label="Fuente de productividad">i</button><div class="hint">Reducción estimada del rendimiento de personas afectadas</div><div id="prodNote" class="explanation">Julmos utiliza 15% como supuesto moderado de simulación. Investigaciones sobre burnout y presentismo respaldan una asociación con menor productividad, pero no existe un porcentaje universal para todas las empresas. Referencia de contexto: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185781" target="_blank" rel="noopener noreferrer">Revisión sistemática en PLOS ONE (2017)</a>. El 15% es un supuesto de modelación, no una cifra obtenida de esa revisión.</div></div><strong>15%</strong></div>
-<div class="ass-row"><div><b>Ausentismo adicional por persona afectada</b><button class="info" type="button" data-note="absNote" aria-expanded="false" aria-label="Fuente de ausentismo">i</button><div class="hint">Días adicionales por enfermedad durante un año</div><div id="absNote" class="explanation">Un estudio longitudinal publicado en <i>Occupational &amp; Environmental Medicine</i> (2006) observó 13.6 frente a 5.4 días de ausencia anual entre grupos con mayor y menor burnout (diferencia de 8.2 días). Julmos utiliza 6 días como supuesto moderado, no como promedio universal ni relación causal demostrada. Una investigación más reciente en <i>Journal of Psychosomatic Research</i> (2024) documenta bajas prolongadas entre pacientes diagnosticados, una población distinta. <a href="https://oem.bmj.com/content/63/2/98" target="_blank" rel="noopener noreferrer">Estudio PUMA</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/38359618/" target="_blank" rel="noopener noreferrer">Estudio 2024</a>.</div></div><strong>6 días</strong></div>
-<div class="ass-row"><div><b>Costo estimado de rotación asociada al burnout</b><button class="info" type="button" data-note="rotNote" aria-expanded="false" aria-label="Metodología de rotación">i</button><div class="hint">Estimación interna Julmos ajustada al país seleccionado</div><div id="rotNote" class="explanation">Aplicamos la metodología orientativa de nuestra Calculadora de Rotación Julmos, ajustada al país seleccionado: costos laborales de terminación, reclutamiento y selección, productividad durante la vacante y adaptación del reemplazo. Para no solicitar más datos, utilizamos supuestos internos: puesto administrativo, 30 días para cubrir la vacante, 3 años de antigüedad y una mezcla hipotética de 70% salidas voluntarias y 30% involuntarias. Los costos laborales son aproximaciones, no liquidaciones legales. La atribución de salidas al burnout es una hipótesis, no una causa demostrada.</div></div><strong>Estimado</strong></div></section>
-<div id="error" class="error hidden" role="alert"></div>
-<section class="results" id="resultados" aria-live="polite"><div class="tag">03 / RESULTADOS</div><h2>El costo potencial del agotamiento laboral</h2><div class="hero"><small>COSTO ECONÓMICO ANUAL ESTIMADO</small><div class="big" id="total">—</div><div class="sub" id="porColaborador">—</div></div><div class="metrics"><div class="metric"><span>Productividad perdida</span><b id="productividad">—</b></div><div class="metric"><span>Ausentismo adicional</span><b id="ausentismo">—</b></div><div class="metric"><span>Rotación potencialmente asociada</span><b id="costoRotacion">—</b></div></div><div class="smallstats"><div>Colaboradores reportados con burnout<strong id="numAfectados">—</strong></div><div>Salidas anuales calculadas<strong id="salidas">—</strong></div><div>Salidas potencialmente asociadas al burnout <button class="info" type="button" data-note="salidasNote" aria-label="¿Cómo se estiman las salidas asociadas al burnout?" aria-expanded="false">i</button><div id="salidasNote" class="explanation">Aplicamos el porcentaje de colaboradores reportados con burnout a las salidas anuales calculadas. Por ejemplo: 9 salidas × 20% = 1.8, redondeado a 2 personas. Es una hipótesis de Julmos para dimensionar el posible impacto económico; no significa que esas salidas hayan sido causadas por burnout. Se utiliza el mismo número entero para calcular el costo de rotación.</div><strong id="salidasAsociadas">—</strong></div></div><div class="method"><strong>Nota metodológica:</strong> simulación orientativa de costos potenciales, no diagnóstico ni causalidad demostrada. El presentismo excluye los seis días adicionales de ausencia para evitar duplicar jornadas. El componente de rotación utiliza supuestos internos de Julmos ajustados al país; la productividad durante una vacante es distinta de la pérdida de rendimiento de quienes permanecen trabajando. Los costos laborales no equivalen a una liquidación legal. El salario se usa como aproximación del valor económico del tiempo. No se convierten monedas.</div></section>
 
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#b7192c">
+<title>Calculadora del Costo del Burnout | Julmos Consultores</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#242424;background:#f6f6f6}
+*{box-sizing:border-box}
+body{margin:0;padding:24px}
+main{max-width:870px;margin:auto;background:white;border:1px solid #e8e8e8;border-radius:20px;padding:32px;box-shadow:0 8px 32px #0000000b}
+.brand,.tag{color:#b7192c;font-size:12px;font-weight:800;letter-spacing:1.2px}
+.motto{font-size:11px;color:#777;letter-spacing:1px;margin-top:5px}
+h1{font-size:clamp(27px,4vw,38px);line-height:1.14;margin:25px 0 12px}
+h2{font-size:22px;margin:10px 0 20px}
+h3{font-size:17px}
+p{line-height:1.6;color:#666}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{display:block;font-size:13px;font-weight:700;margin:10px 0 7px}
+input,select{width:100%;padding:13px;border:1px solid #d7d7d7;border-radius:9px;background:#fff;color:#222;font-size:15px}
+input:focus,select:focus,button:focus-visible{outline:2px solid #b7192c;outline-offset:2px}
+.hint{font-size:12px;color:#777;line-height:1.5;margin-top:6px}
+.span2{grid-column:1/-1}
+.assumptions{margin-top:26px;padding:20px;border:1px solid #ececec;border-radius:14px;background:#fafafa}
+.ass-row{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid #e8e8e8;padding:15px 0}
+.ass-row:first-of-type{border:0}
+.ass-row strong{font-size:21px;color:#b7192c;white-space:nowrap}
+.ass-row b{font-size:14px}
+.info{display:inline-flex;justify-content:center;align-items:center;width:23px;height:23px;border:1px solid #bbb;background:white;border-radius:50%;cursor:pointer;font-size:12px;margin-left:5px;color:#555}
+.explanation{display:none;font-size:12px;color:#666;line-height:1.6;margin-top:8px;max-width:650px}
+.explanation.open{display:block}
+.explanation a{color:#a4192b}
+.btn{display:inline-block;border:0;border-radius:9px;background:#b7192c;color:white;padding:15px 23px;font-weight:700;font-size:15px;cursor:pointer;margin-top:20px}
+.btn:disabled{opacity:.65;cursor:wait}
+.error{color:#a4192b;font-size:13px;margin-top:12px}
+.hidden{display:none!important}
+.results{border-top:1px solid #eee;margin-top:30px;padding-top:26px}
+.hero{background:#b7192c;color:#fff;border-radius:14px;padding:25px}
+.hero small{font-weight:700;letter-spacing:1px}
+.hero .big{font-size:clamp(30px,5vw,45px);font-weight:800;margin:10px 0;overflow-wrap:anywhere}
+.hero .sub{font-size:13px;opacity:.95}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.metric{border:1px solid #e7e7e7;border-radius:11px;padding:16px}
+.metric span{font-size:12px;color:#777}
+.metric b{display:block;font-size:21px;margin-top:10px;overflow-wrap:anywhere}
+.smallstats{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}
+.smallstats div{background:#f7f7f7;padding:12px 15px;border-radius:9px;font-size:13px}
+.smallstats strong{display:block;margin-top:4px}
+.method{font-size:12px;color:#777;line-height:1.65;background:#fafafa;border-left:3px solid #b7192c;padding:12px 15px;margin-top:20px}
+.ai{margin-top:26px;padding:22px;border:1px solid #e8e8e8;border-radius:13px}
+.analysis{white-space:pre-wrap;line-height:1.75;font-size:14px;margin-top:17px}
+.cta{background:#fafafa;padding:20px;border-radius:12px;margin-top:25px}
+.cta a{color:#b7192c;font-weight:700}
+.foot{font-size:12px;color:#777;text-align:center;margin-top:24px}
+@media(max-width:650px){
+body{padding:0}
+main{border:0;border-radius:0;padding:22px 17px}
+.grid,.metrics{grid-template-columns:1fr}
+.span2{grid-column:auto}
+.assumptions{padding:15px}
+.metric b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<main>
+<div class="brand">JULMOS CONSULTORES</div>
+<div class="motto">VISIÓN · PASIÓN · PROPÓSITO</div>
+
+<h1>¿Cuánto le cuesta el burnout a tu empresa?</h1>
+<p>El agotamiento laboral puede afectar la productividad, aumentar el ausentismo y contribuir a la rotación. Estima el impacto económico potencial anual con solo cinco datos.</p>
+
+<div class="tag">01 / DATOS DE TU ORGANIZACIÓN</div>
+<h2>Conozcamos tu empresa</h2>
+
+<div class="grid">
+  <div class="field span2">
+    <label for="pais">País</label>
+    <select id="pais">
+      <option>Panamá</option>
+      <option>Costa Rica</option>
+      <option>El Salvador</option>
+      <option>Guatemala</option>
+      <option>Honduras</option>
+      <option>Nicaragua</option>
+      <option>Colombia</option>
+      <option>República Dominicana</option>
+    </select>
+    <div class="hint">El país determina la moneda y los supuestos de terminación laboral del componente de rotación.</div>
+  </div>
+
+  <div class="field">
+    <label for="empleados">Número de colaboradores</label>
+    <input id="empleados" type="number" min="1" step="1" value="100">
+  </div>
+
+  <div class="field">
+    <label for="salario" id="salarioLabel">Salario mensual promedio (USD)</label>
+    <input id="salario" type="number" min="0.01" step="any" value="1200">
+  </div>
+
+  <div class="field">
+    <label for="afectados">
+      Colaboradores con burnout reportado o sospechado (%)
+      <button class="info" type="button" data-note="definicion" aria-label="¿Qué significa reportado o sospechado?" aria-expanded="false">i</button>
+    </label>
+    <div id="definicion" class="explanation">Incluye reportes voluntarios de agotamiento laboral persistente o señales que ameriten evaluación. No equivale a un diagnóstico médico. Utiliza solo datos agregados y evita identificar a personas.</div>
+    <input id="afectados" type="number" min="0" max="100" step="any" value="20" aria-label="Porcentaje de colaboradores con burnout reportado o sospechado">
+    <div id="equiv" class="hint">20% de la plantilla equivale a 20 colaboradores.</div>
+  </div>
+
+  <div class="field">
+    <label for="rotacion">Rotación anual (%)</label>
+    <input id="rotacion" type="number" min="0" max="100" step="any" value="12">
+    <div class="hint">Las salidas anuales se calculan automáticamente con este porcentaje.</div>
+  </div>
+</div>
+
+<section class="assumptions">
+  <div class="tag">02 / SUPUESTOS DEL MODELO JULMOS</div>
+  <h3>¿De dónde salen nuestras estimaciones?</h3>
+
+  <div class="ass-row">
+    <div>
+      <b>Pérdida de productividad</b>
+      <button class="info" type="button" data-note="prodNote" aria-expanded="false" aria-label="Fuente de productividad">i</button>
+      <div class="hint">Reducción estimada del rendimiento de personas afectadas</div>
+      <div id="prodNote" class="explanation">
+        Julmos utiliza 15% como supuesto moderado de simulación. Investigaciones sobre burnout y presentismo respaldan una asociación con menor productividad, pero no existe un porcentaje universal para todas las empresas.
+        Referencia de contexto:
+        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185781" target="_blank" rel="noopener noreferrer">Revisión sistemática en PLOS ONE (2017)</a>.
+        El 15% es un supuesto de modelación, no una cifra obtenida de esa revisión.
+      </div>
+    </div>
+    <strong>15%</strong>
+  </div>
+
+  <div class="ass-row">
+    <div>
+      <b>Ausentismo adicional por persona afectada</b>
+      <button class="info" type="button" data-note="absNote" aria-expanded="false" aria-label="Fuente de ausentismo">i</button>
+      <div class="hint">Días adicionales por enfermedad durante un año</div>
+      <div id="absNote" class="explanation">
+        Un estudio longitudinal publicado en <i>Occupational &amp; Environmental Medicine</i> (2006) observó 13.6 frente a 5.4 días de ausencia anual entre grupos con mayor y menor burnout (diferencia de 8.2 días).
+        Julmos utiliza 6 días como supuesto moderado, no como promedio universal ni relación causal demostrada.
+        Una investigación más reciente en <i>Journal of Psychosomatic Research</i> (2024) documenta bajas prolongadas entre pacientes diagnosticados, una población distinta.
+        <a href="https://oem.bmj.com/content/63/2/98" target="_blank" rel="noopener noreferrer">Estudio PUMA</a> ·
+        <a href="https://pubmed.ncbi.nlm.nih.gov/38359618/" target="_blank" rel="noopener noreferrer">Estudio 2024</a>.
+      </div>
+    </div>
+    <strong>6 días</strong>
+  </div>
+
+  <div class="ass-row">
+    <div>
+      <b>Costo estimado de rotación asociada al burnout</b>
+      <button class="info" type="button" data-note="rotNote" aria-expanded="false" aria-label="Metodología de rotación">i</button>
+      <div class="hint">Estimación interna Julmos ajustada al país seleccionado</div>
+      <div id="rotNote" class="explanation">
+        Aplicamos la metodología orientativa de nuestra Calculadora de Rotación Julmos, ajustada al país seleccionado: costos laborales de terminación, reclutamiento y selección, productividad durante la vacante y adaptación del reemplazo.
+        Para no solicitar más datos, utilizamos supuestos internos: puesto administrativo, 30 días para cubrir la vacante, 3 años de antigüedad y una mezcla hipotética de 70% salidas voluntarias y 30% involuntarias.
+        Los costos laborales son aproximaciones, no liquidaciones legales. La atribución de salidas al burnout es una hipótesis, no una causa demostrada.
+      </div>
+    </div>
+    <strong>Estimado</strong>
+  </div>
+</section>
+
+<div id="error" class="error hidden" role="alert"></div>
+
+<section class="results" id="resultados" aria-live="polite">
+  <div class="tag">03 / RESULTADOS</div>
+  <h2>El costo potencial del agotamiento laboral</h2>
+
+  <div class="hero">
+    <small>COSTO ECONÓMICO ANUAL ESTIMADO</small>
+    <div class="big" id="total">—</div>
+    <div class="sub" id="porColaborador">—</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <span>Productividad perdida</span>
+      <b id="productividad">—</b>
+    </div>
+    <div class="metric">
+      <span>Ausentismo adicional</span>
+      <b id="ausentismo">—</b>
+    </div>
+    <div class="metric">
+      <span>Rotación potencialmente asociada</span>
+      <b id="costoRotacion">—</b>
+    </div>
+  </div>
+
+  <div class="smallstats">
+    <div>
+      Colaboradores reportados con burnout
+      <strong id="numAfectados">—</strong>
+    </div>
+    <div>
+      Salidas anuales calculadas
+      <strong id="salidas">—</strong>
+    </div>
+    <div>
+      Salidas potencialmente asociadas al burnout
+      <button class="info" type="button" data-note="salidasNote" aria-label="¿Cómo se estiman las salidas asociadas al burnout?" aria-expanded="false">i</button>
+      <div id="salidasNote" class="explanation">
+        Aplicamos el porcentaje de colaboradores reportados con burnout a las salidas anuales calculadas.
+        Por ejemplo: 9 salidas × 20% = 1.8, redondeado a 2 personas.
+        Es una hipótesis de Julmos para dimensionar el posible impacto económico; no significa que esas salidas hayan sido causadas por burnout.
+        Se utiliza el mismo número entero para calcular el costo de rotación.
+      </div>
+      <strong id="salidasAsociadas">—</strong>
+    </div>
+  </div>
+
+  <div class="method">
+    <strong>Nota metodológica:</strong> simulación orientativa de costos potenciales, no diagnóstico ni causalidad demostrada.
+    El presentismo excluye los seis días adicionales de ausencia para evitar duplicar jornadas.
+    El componente de rotación utiliza supuestos internos de Julmos ajustados al país; la productividad durante una vacante es distinta de la pérdida de rendimiento de quienes permanecen trabajando.
+    Los costos laborales no equivalen a una liquidación legal.
+    El salario se usa como aproximación del valor económico del tiempo.
+    No se convierten monedas.
+  </div>
+</section>
+
+<!-- SECCIÓN DE IA: SIN LOS TEXTOS INTRODUCTORIOS -->
 <section class="ai" id="aiSection">
   <button class="btn" type="button" id="analizar">
     ✦ Obtener análisis y recomendaciones con IA
   </button>
   <div id="analisis" class="analysis hidden" aria-live="polite"></div>
 </section>
-<div class="cta"><b>¿Quieres construir una organización más saludable y productiva?</b><p>En Julmos te ayudamos a conectar bienestar, liderazgo y resultados de negocio.</p><a href="https://www.julmos.com/" target="_blank" rel="noopener noreferrer">Conversemos →</a></div><div class="foot">Desciframos el código genético de tu organización</div></main>
+
+<div class="cta">
+  <b>¿Quieres construir una organización más saludable y productiva?</b>
+  <p>En Julmos te ayudamos a conectar bienestar, liderazgo y resultados de negocio.</p>
+  <a href="https://www.julmos.com/" target="_blank" rel="noopener noreferrer">Conversemos →</a>
+</div>
+
+<div class="foot">Desciframos el código genético de tu organización</div>
+</main>
+
 <script>
 'use strict';
+
 const $=id=>document.getElementById(id);
-const paises={'Panamá':['USD','es-PA'],'Costa Rica':['CRC','es-CR'],'El Salvador':['USD','es-SV'],'Guatemala':['GTQ','es-GT'],'Honduras':['HNL','es-HN'],'Nicaragua':['NIO','es-NI'],'Colombia':['COP','es-CO'],'República Dominicana':['DOP','es-DO']};
+
+const paises={
+  'Panamá':['USD','es-PA'],
+  'Costa Rica':['CRC','es-CR'],
+  'El Salvador':['USD','es-SV'],
+  'Guatemala':['GTQ','es-GT'],
+  'Honduras':['HNL','es-HN'],
+  'Nicaragua':['NIO','es-NI'],
+  'Colombia':['COP','es-CO'],
+  'República Dominicana':['DOP','es-DO']
+};
+
 let ultimo=null;
+
 const valor=id=>$(id).value.trim()===''?NaN:Number($(id).value);
-const formato=x=>{const [moneda,locale]=paises[$('pais').value];return moneda+' '+new Intl.NumberFormat(locale,{maximumFractionDigits:0}).format(x)};
+
+const formato=x=>{
+  const [moneda,locale]=paises[$('pais').value];
+  return moneda+' '+new Intl.NumberFormat(locale,{maximumFractionDigits:0}).format(x);
+};
+
 const decimal=x=>new Intl.NumberFormat('es-PA',{maximumFractionDigits:1}).format(x);
-function actualizarPais(){$('salarioLabel').textContent='Salario mensual promedio ('+paises[$('pais').value][0]+')';invalidar()}
-function equivalencia(){const n=valor('empleados'),a=valor('afectados');const personas=n*a/100;const pct=n>0?personas/n*100:0;$('equiv').textContent=Number.isFinite(personas)&&personas>=0?'Equivale aproximadamente a '+Math.round(personas)+' colaboradores ('+decimal(pct)+'%).':'Ingresa una cantidad válida.'}
-function invalidar(){$('analisis').classList.add('hidden');ultimo=null;equivalencia();calcular()}
-// Misma metodología de la calculadora de rotación Julmos, modalidad empresa.
-// Supuestos internos: administrativa, 30 días de vacante, 3 años de antigüedad,
-// mezcla ilustrativa de 70% salidas voluntarias y 30% involuntarias.
-const DIAS_VACANTE=30, ANTIGUEDAD=3, TASA_ADMINISTRATIVA=.35;
+
+function actualizarPais(){
+  $('salarioLabel').textContent='Salario mensual promedio ('+paises[$('pais').value][0]+')';
+  invalidar();
+}
+
+function equivalencia(){
+  const n=valor('empleados'),a=valor('afectados');
+  const personas=n*a/100;
+  const pct=n>0?personas/n*100:0;
+  $('equiv').textContent=Number.isFinite(personas)&&personas>=0
+    ?'Equivale aproximadamente a '+Math.round(personas)+' colaboradores ('+decimal(pct)+'%).'
+    :'Ingresa una cantidad válida.';
+}
+
+function invalidar(){
+  $('analisis').classList.add('hidden');
+  ultimo=null;
+  equivalencia();
+  calcular();
+}
+
+// Metodología de la Calculadora de Rotación Julmos.
+// Supuestos internos: puesto administrativo, 30 días de vacante,
+// 3 años de antigüedad, 70% salidas voluntarias y 30% involuntarias.
+
+const DIAS_VACANTE=30;
+const ANTIGUEDAD=3;
+const TASA_ADMINISTRATIVA=.35;
+
 const diasSalario=(s,n)=>s*n/30;
 const semanasSalario=(s,n)=>s*12*n/52;
+
 function costoLaboralPais(pais,s,a,involuntaria){
   switch(pais){
-    case 'Panamá': return semanasSalario(s,a)+(involuntaria?semanasSalario(s,3.4*Math.min(a,10)+Math.max(0,a-10)):0);
-    case 'Costa Rica': {
+    case 'Panamá':
+      return semanasSalario(s,a)+(involuntaria?semanasSalario(s,3.4*Math.min(a,10)+Math.max(0,a-10)):0);
+
+    case 'Costa Rica':{
       if(!involuntaria)return 0;
       let ces=0;
       if(a>=.25&&a<.5)ces=7;
@@ -50,9 +316,14 @@ function costoLaboralPais(pais,s,a,involuntaria){
       else if(a>=1)ces=Math.min(a,8)*20;
       return diasSalario(s,ces)+diasSalario(s,a>=1?30:a>=.5?15:a>=.25?7:0);
     }
-    case 'El Salvador': return involuntaria?diasSalario(s,30*Math.max(a,0)):(a>=2?diasSalario(s,15*a):0);
-    case 'Guatemala': return involuntaria?s*a:0;
-    case 'Honduras': {
+
+    case 'El Salvador':
+      return involuntaria?diasSalario(s,30*Math.max(a,0)):(a>=2?diasSalario(s,15*a):0);
+
+    case 'Guatemala':
+      return involuntaria?s*a:0;
+
+    case 'Honduras':{
       if(involuntaria){
         const ces=a<.25?0:a<=.5?10:a<1?20:Math.min(a*30,25*30);
         const pre=a>=2?60:a>=1?30:a>=.5?14:a>=.25?7:0;
@@ -60,31 +331,151 @@ function costoLaboralPais(pais,s,a,involuntaria){
       }
       return a>=15?s*Math.min(a,25)*.35:0;
     }
-    case 'Nicaragua': {
+
+    case 'Nicaragua':{
       if(!involuntaria||a<=0)return 0;
       const meses=Math.min(5,Math.max(1,Math.min(a,3)+Math.max(0,a-3)*20/30));
       return s*meses;
     }
-    case 'Colombia': return involuntaria&&a>0?diasSalario(s,30+20*Math.max(0,a-1)):0;
-    case 'República Dominicana': {
+
+    case 'Colombia':
+      return involuntaria&&a>0?diasSalario(s,30+20*Math.max(0,a-1)):0;
+
+    case 'República Dominicana':{
       if(!involuntaria)return 0;
       const ces=a<.25?0:a<.5?6:a<1?13:a<=5?21*a:23*a;
       const pre=a<.25?0:a<.5?7:a<1?14:28;
       return diasSalario(s,ces+pre);
     }
-    default: return 0;
+
+    default:return 0;
   }
 }
+
 function costoRotacionPorSalida(pais,s){
-  const laboral=.7*costoLaboralPais(pais,s,ANTIGUEDAD,false)+.3*costoLaboralPais(pais,s,ANTIGUEDAD,true);
+  const laboral=.7*costoLaboralPais(pais,s,ANTIGUEDAD,false)
+               +.3*costoLaboralPais(pais,s,ANTIGUEDAD,true);
   const reclutamiento=s*.5;
   const vacante=s*DIAS_VACANTE/30*TASA_ADMINISTRATIVA;
   const adaptacion=s*.5;
-  return {total:laboral+reclutamiento+vacante+adaptacion,laboral,reclutamiento,vacante,adaptacion};
+
+  return {
+    total:laboral+reclutamiento+vacante+adaptacion,
+    laboral,reclutamiento,vacante,adaptacion
+  };
 }
-function calcular(){const n=valor('empleados'),salario=valor('salario'),a=valor('afectados'),rot=valor('rotacion');const afectados=n*a/100;const valid=Number.isInteger(n)&&n>0&&n<=1e9&&Number.isFinite(salario)&&salario>0&&salario<=1e12&&Number.isFinite(a)&&a>=0&&Number.isFinite(rot)&&rot>=0&&rot<=100&&afectados<=n&&a<=100;$('error').classList.toggle('hidden',valid);$('error').textContent=valid?'':'Revisa los datos: colaboradores enteros, salario mayor que cero, porcentaje entre 0 y 100 y personas afectadas no superiores a la plantilla.';if(!valid){$('total').textContent='—';['porColaborador','productividad','ausentismo','costoRotacion','numAfectados','salidas','salidasAsociadas'].forEach(id=>$(id).textContent='—');ultimo=null;return}
-const afectadosEnteros=Math.round(afectados),diario=salario*12/260,ausentismo=afectadosEnteros*6*diario,productividad=afectadosEnteros*(260-6)*diario*.15,salidas=Math.round(n*rot/100),salidasAsociadas=Math.round(salidas*(afectadosEnteros/n)),costoPorSalida=costoRotacionPorSalida($('pais').value,salario),costoRotacion=salidasAsociadas*costoPorSalida.total,total=productividad+ausentismo+costoRotacion;
-$('total').textContent=formato(total);$('porColaborador').textContent=formato(total/n)+' por colaborador de la organización';$('productividad').textContent=formato(productividad);$('ausentismo').textContent=formato(ausentismo);$('costoRotacion').textContent=formato(costoRotacion);$('numAfectados').textContent=String(afectadosEnteros);$('salidas').textContent=String(salidas);$('salidasAsociadas').textContent=String(salidasAsociadas);$('resultados').classList.remove('hidden');$('aiSection').classList.remove('hidden');$('analisis').classList.add('hidden');ultimo={pais:$('pais').value,moneda:paises[$('pais').value][0],colaboradores:n,salarioMensual:salario,afectados:afectadosEnteros,porcentajeAfectados:a,rotacionAnual:rot,salidasAnuales:salidas,salidasAsociadas,productividad,ausentismo,costoRotacion,total,supuestos:{productividadPorcentaje:15,ausenciasDias:6,metodologiaRotacion:'Julmos país; administrativa; 30 días vacante; 3 años antigüedad; 70% voluntaria y 30% involuntaria',costoPromedioPorSalida:costoPorSalida.total,desgloseCostoPorSalida:costoPorSalida,atribucionRotacion:'hipótesis proporcional'}};}
-async function analizar(){if(!ultimo)return;const boton=$('analizar'),out=$('analisis');out.classList.remove('hidden');out.textContent='Preparando tu análisis…';boton.disabled=true;try{const resp=await fetch('/api/analizar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ultimo)});const data=await resp.json().catch(()=>({}));if(!resp.ok)throw Error(data.error||'No fue posible obtener el análisis.');out.textContent=data.analisis||'No se recibió el análisis.'}catch(e){out.textContent=e.message+' Los resultados económicos siguen disponibles.'}finally{boton.disabled=false}}
-document.querySelectorAll('[data-note]').forEach(b=>b.addEventListener('click',()=>{const el=$(b.dataset.note),open=el.classList.toggle('open');b.setAttribute('aria-expanded',String(open))}));$('pais').addEventListener('change',actualizarPais);document.querySelectorAll('input').forEach(e=>e.addEventListener('input',invalidar));$('analizar').addEventListener('click',analizar);actualizarPais();
-</script></body></html>
+
+function calcular(){
+  const n=valor('empleados');
+  const salario=valor('salario');
+  const a=valor('afectados');
+  const rot=valor('rotacion');
+  const afectados=n*a/100;
+
+  const valid=Number.isInteger(n)&&n>0&&n<=1e9
+    &&Number.isFinite(salario)&&salario>0&&salario<=1e12
+    &&Number.isFinite(a)&&a>=0&&a<=100
+    &&Number.isFinite(rot)&&rot>=0&&rot<=100
+    &&afectados<=n;
+
+  $('error').classList.toggle('hidden',valid);
+  $('error').textContent=valid?'':'Revisa los datos: colaboradores enteros, salario mayor que cero, porcentaje entre 0 y 100 y personas afectadas no superiores a la plantilla.';
+
+  if(!valid){
+    $('total').textContent='—';
+    ['porColaborador','productividad','ausentismo','costoRotacion','numAfectados','salidas','salidasAsociadas'].forEach(id=>$(id).textContent='—');
+    ultimo=null;
+    return;
+  }
+
+  const afectadosEnteros=Math.round(afectados);
+  const diario=salario*12/260;
+  const ausentismo=afectadosEnteros*6*diario;
+  const productividad=afectadosEnteros*(260-6)*diario*.15;
+  const salidas=Math.round(n*rot/100);
+  const salidasAsociadas=Math.round(salidas*(afectadosEnteros/n));
+  const costoPorSalida=costoRotacionPorSalida($('pais').value,salario);
+  const costoRotacion=salidasAsociadas*costoPorSalida.total;
+  const total=productividad+ausentismo+costoRotacion;
+
+  $('total').textContent=formato(total);
+  $('porColaborador').textContent=formato(total/n)+' por colaborador de la organización';
+  $('productividad').textContent=formato(productividad);
+  $('ausentismo').textContent=formato(ausentismo);
+  $('costoRotacion').textContent=formato(costoRotacion);
+  $('numAfectados').textContent=String(afectadosEnteros);
+  $('salidas').textContent=String(salidas);
+  $('salidasAsociadas').textContent=String(salidasAsociadas);
+
+  $('resultados').classList.remove('hidden');
+  $('aiSection').classList.remove('hidden');
+  $('analisis').classList.add('hidden');
+
+  ultimo={
+    pais:$('pais').value,
+    moneda:paises[$('pais').value][0],
+    colaboradores:n,
+    salarioMensual:salario,
+    afectados:afectadosEnteros,
+    porcentajeAfectados:a,
+    rotacionAnual:rot,
+    salidasAnuales:salidas,
+    salidasAsociadas,
+    productividad,
+    ausentismo,
+    costoRotacion,
+    total,
+    supuestos:{
+      productividadPorcentaje:15,
+      ausenciasDias:6,
+      metodologiaRotacion:'Julmos país; administrativa; 30 días vacante; 3 años antigüedad; 70% voluntaria y 30% involuntaria',
+      costoPromedioPorSalida:costoPorSalida.total,
+      desgloseCostoPorSalida:costoPorSalida,
+      atribucionRotacion:'hipótesis proporcional'
+    }
+  };
+}
+
+async function analizar(){
+  if(!ultimo)return;
+
+  const boton=$('analizar');
+  const out=$('analisis');
+
+  out.classList.remove('hidden');
+  out.textContent='Preparando tu análisis…';
+  boton.disabled=true;
+
+  try{
+    const resp=await fetch('/api/analizar',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(ultimo)
+    });
+
+    const data=await resp.json().catch(()=>({}));
+    if(!resp.ok)throw Error(data.error||'No fue posible obtener el análisis.');
+
+    out.textContent=data.analisis||'No se recibió el análisis.';
+  }catch(e){
+    out.textContent=e.message+' Los resultados económicos siguen disponibles.';
+  }finally{
+    boton.disabled=false;
+  }
+}
+
+document.querySelectorAll('[data-note]').forEach(b=>
+  b.addEventListener('click',()=>{
+    const el=$(b.dataset.note);
+    const open=el.classList.toggle('open');
+    b.setAttribute('aria-expanded',String(open));
+  })
+);
+
+$('pais').addEventListener('change',actualizarPais);
+document.querySelectorAll('input').forEach(e=>e.addEventListener('input',invalidar));
+$('analizar').addEventListener('click',analizar);
+actualizarPais();
+</script>
+</body>
+</html>
